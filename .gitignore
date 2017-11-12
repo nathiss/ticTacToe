@@ -1,0 +1,6 @@
+share/
+lib/
+*.o
+ttt
+.swp
+.swo
