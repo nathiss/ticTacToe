@@ -3,7 +3,6 @@
 #include <cstdint>
 #include <memory>
 #include <array>
-#include <iostream>
 #include "Map.hpp"
 #include "MapCell.hpp"
 

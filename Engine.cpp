@@ -46,7 +46,6 @@ bool Engine::makeMove() {
       }
     }
 
-  std::cout << idx % 3 << ", " << idx / 3 << std::endl;
   return map->set(idx / 3, idx % 3, character);
 }
 
