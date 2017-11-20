@@ -12,11 +12,11 @@
 #include "EndState.hpp"
 
 class Game {
-	public:
-		Game();
-		~Game();
+ public:
+    Game();
+    ~Game();
 
-		void run();
+    void run();
     int getCode() const;
 
   private:
