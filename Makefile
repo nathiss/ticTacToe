@@ -7,7 +7,7 @@ EXEC=ttt
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 
-.PHONY: clean
+.PHONY: clean all run
 
 all: clean $(EXEC)
 

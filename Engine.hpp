@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <stdexcept>
 #include <array>
 #include "Map.hpp"
 #include "MapCell.hpp"

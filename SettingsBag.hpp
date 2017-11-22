@@ -16,7 +16,7 @@ class SettingsBag {
     static std::shared_ptr<SettingsBag> Instance();
 
   protected:
-	  SettingsBag();
+    SettingsBag();
 
   private:
     std::unordered_map<std::string, std::any> map;

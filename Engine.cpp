@@ -30,6 +30,8 @@ MapCell::Value Engine::getCharacter() const {
 }
 
 bool Engine::makeMove() {
+  if(character == MapCell::NONE)
+    throw std::logic_error("Character is not set.");
   simplifyMap();
   
   int8_t idx = -1;
@@ -46,7 +48,9 @@ bool Engine::makeMove() {
       }
     }
 
-  return map->set(idx / 3, idx % 3, character);
+  uint8_t x = idx / 3;
+  uint8_t y = idx % 3;
+  return map->set(x, y, character);
 }
 
 void Engine::simplifyMap() {
