@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "MapCell.hpp"
+#include "SettingsBag.hpp"
 
 class Map : public sf::Drawable {
   public:
@@ -32,5 +33,4 @@ class Map : public sf::Drawable {
 
   private:
     MapCell map[3][3]{};
-    sf::Font font;
 };

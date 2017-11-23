@@ -29,6 +29,5 @@ class GameState : public State {
 
     std::unique_ptr<Engine> engine;
 
-    sf::Font font;
     sf::Text exit;
 };

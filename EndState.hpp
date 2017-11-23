@@ -20,7 +20,6 @@ class EndState : public State {
     std::string getStringInfo() const;
 
   private:
-    sf::Font font;
     sf::Text info;
     sf::Text buttons[3];
 };

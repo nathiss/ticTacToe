@@ -1,9 +1,6 @@
 #include "GameState.hpp"
 
 GameState::GameState(std::shared_ptr<sf::RenderWindow> w) {
-  if(!font.loadFromFile("./data/GlacialIndifference/GlacialIndifference-Regular.otf")) {
-    throw std::runtime_error("Could not load font ./data/GlacialIndiffrence/GlacialIndiffrence-Regular.otf");
-  }
   window = w;
   bag = SettingsBag::Instance();
   map = std::make_shared<Map>();
@@ -62,7 +59,7 @@ void GameState::draw() {
 
 void GameState::setUpTexts() {
   exit.setString("Exit");
-  exit.setFont(font);
+  exit.setFont(*bag->get<sf::Font*>("font.menu"));
   exit.setCharacterSize(32);
   exit.setFillColor(bag->get<sf::Color>("color.neutral"));
   exit.setStyle(sf::Text::Bold);

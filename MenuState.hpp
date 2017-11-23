@@ -18,10 +18,6 @@ class MenuState : public State {
     virtual void draw() override;
     
   private:
-    void loadFonts();
-
-    sf::Font mainFont;
-    sf::Font menuFont;
     sf::Text title;
     std::array<sf::Text, 2> buttons;
     sf::Text cpyrht;

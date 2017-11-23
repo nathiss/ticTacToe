@@ -19,7 +19,6 @@ class OptionsState : public State {
     virtual void draw() override;
 
   private:
-    sf::Font menuFont;
     std::array<sf::Text, 3> orderOption;
     std::array<sf::Text, 3> characterOption;
 

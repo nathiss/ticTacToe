@@ -3,6 +3,7 @@
 Game::Game() {
   bag = SettingsBag::Instance();
   loadConsts();
+  loadFonts();
 
 	window = std::make_shared<sf::RenderWindow>(
     sf::VideoMode(bag->get<uint32_t>("window.width"), bag->get<uint32_t>("window.height")),
@@ -17,7 +18,8 @@ Game::Game() {
 }
 
 Game::~Game() {
-
+  delete bag->get<sf::Font*>("font.main");
+  delete bag->get<sf::Font*>("font.menu");
 }
 
 void Game::run() {
@@ -48,6 +50,26 @@ void Game::loadConsts() {
   bag->set<sf::Color>("color.main", sf::Color(0xff9060ff));
   bag->set<sf::Color>("color.bg", sf::Color(0x57c785ff));
   bag->set<sf::Color>("color.neutral", sf::Color::White);
+}
+
+void Game::loadFonts() {
+  sf::Font *main = new sf::Font();
+  sf::Font *menu = new sf::Font();
+  sf::Font *terminal = new sf::Font();
+
+  if(!main->loadFromFile("./data/Unique/Unique.ttf")) {
+    throw std::runtime_error("Could not load font ./data/Unique/Unique.ttf");
+  }
+  if(!menu->loadFromFile("./data/GlacialIndifference/GlacialIndifference-Regular.otf")) {
+    throw std::runtime_error("Could not load font ./data/GlacialIndiffrence/GlacialIndiffrence-Regular.otf");
+  }
+  if(!terminal->loadFromFile("./data/Inconsolata/Inconsolata-Regular.ttf")) {
+    throw std::runtime_error("Could not load font ./data/Inconsolata/Inconsolata-Regular.ttf");
+  }
+  
+  bag->set<sf::Font*>("font.main", main);
+  bag->set<sf::Font*>("font.menu", menu);
+  bag->set<sf::Font*>("font.terminal", terminal);
 }
 
 State* Game::createState(State::Type type) {

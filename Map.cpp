@@ -1,13 +1,10 @@
 #include "Map.hpp"
 
 Map::Map() {
-  if(!font.loadFromFile("./data/Inconsolata/Inconsolata-Regular.ttf")) {
-    throw std::runtime_error("Could not load font ./data/Inconsolata/Inconsolata-Regular.ttf");
-  }
-
+  sf::Font *terminal = SettingsBag::Instance()->get<sf::Font*>("font.terminal");
   for(uint8_t i=0; i<3; i++)
     for(uint8_t j=0; j<3; j++)
-      map[i][j].setFont(font);
+      map[i][j].setFont(*terminal);
 
   setPosition(0.f, 0.f);
 }

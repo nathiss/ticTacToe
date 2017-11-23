@@ -3,10 +3,9 @@
 MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w) {
   window = w;
   bag = SettingsBag::Instance();
-  loadFonts();
 
   title.setString(bag->get<std::string>("window.title"));
-  title.setFont(mainFont);
+  title.setFont(*bag->get<sf::Font*>("font.main"));
   title.setCharacterSize(72);
   title.setStyle(sf::Text::Bold);
   title.setFillColor(bag->get<sf::Color>("color.main"));
@@ -16,14 +15,14 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w) {
   buttons[0].setString("Start");
   buttons[1].setString("Exit");
   for(uint8_t i = 0; i < buttons.size(); i++) {
-    buttons[i].setFont(menuFont);
+    buttons[i].setFont(*bag->get<sf::Font*>("font.menu"));
     buttons[i].setCharacterSize(48);
     buttons[i].setFillColor(bag->get<sf::Color>("color.neutral"));
     buttons[i].setPosition(centerHorizontally(buttons[i].getLocalBounds()), 200.f + 75 * i);
   }
 
   cpyrht.setString("Copyright (c) 2017 Kamil Rusin");
-  cpyrht.setFont(menuFont);
+  cpyrht.setFont(*bag->get<sf::Font*>("font.menu"));
   cpyrht.setCharacterSize(12);
   cpyrht.setFillColor(bag->get<sf::Color>("color.neutral"));
   cpyrht.setPosition(5.f, window->getSize().y - cpyrht.getLocalBounds().height - 5.f);
@@ -69,13 +68,4 @@ void MenuState::draw() {
     window->draw(t);
   }
   window->draw(cpyrht);
-}
-
-void MenuState::loadFonts() {
-  if(!mainFont.loadFromFile("./data/Unique/Unique.ttf")) {
-    throw std::runtime_error("Could not load font ./data/Unique/Unique.ttf");
-  }
-  if(!menuFont.loadFromFile("./data/GlacialIndifference/GlacialIndifference-Regular.otf")) {
-    throw std::runtime_error("Could not load font ./data/GlacialIndiffrence/GlacialIndiffrence-Regular.otf");
-  }
 }

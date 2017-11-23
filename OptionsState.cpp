@@ -5,10 +5,6 @@ OptionsState::OptionsState(std::shared_ptr<sf::RenderWindow> w) {
   bag = SettingsBag::Instance();
   optionIdx = 0;
 
-  if(!menuFont.loadFromFile("./data/GlacialIndifference/GlacialIndifference-Regular.otf")) {
-    throw std::runtime_error("Could not load font ./data/GlacialIndiffrence/GlacialIndiffrence-Regular.otf");
-  }
-
   orderOption[0].setString("Who starts?");
   orderOption[1].setString("Player");
   orderOption[2].setString("Computer");
@@ -33,9 +29,10 @@ OptionsState::OptionsState(std::shared_ptr<sf::RenderWindow> w) {
     characterOption[i].setCharacterSize(32);
   }
 
+  sf::Font *menu = bag->get<sf::Font*>("font.menu");
   for(uint8_t i=0; i<3; i++) {
-    orderOption[i].setFont(menuFont);
-    characterOption[i].setFont(menuFont);
+    orderOption[i].setFont(*menu);
+    characterOption[i].setFont(*menu);
 
     orderOption[i].setPosition(centerHorizontally(orderOption[i].getLocalBounds()), 200.f + 60*i);
     characterOption[i].setPosition(centerHorizontally(characterOption[i].getLocalBounds()), 200.f + 60*i);

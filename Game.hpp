@@ -21,6 +21,7 @@ class Game {
 
   private:
     void loadConsts();
+    void loadFonts();
     State* createState(State::Type);
 
     std::shared_ptr<SettingsBag> bag;
