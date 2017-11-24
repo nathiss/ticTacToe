@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <memory>
 #include <unordered_map>
-#include <any>
 
 class SettingsBag {
   public:
@@ -19,16 +18,18 @@ class SettingsBag {
     SettingsBag();
 
   private:
-    std::unordered_map<std::string, std::any> map;
+    std::unordered_map<std::string, void*> map;
     static std::shared_ptr<SettingsBag> instance;
 };
 
 template <class T>
 void SettingsBag::set(const std::string& key, const T& value) {
-  map[key] = std::make_any<const T&>(value);
+  if(map.count(key))
+    delete reinterpret_cast<T*>(map.at(key));
+  map[key] = reinterpret_cast<void*>(new T(value));
 }
 
 template <class T>
 const T& SettingsBag::get(const std::string& key) const {
-  return std::any_cast<const T&>(map.at(key));
+  return *reinterpret_cast<T*>(map.at(key));
 }
