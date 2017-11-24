@@ -66,6 +66,7 @@ void Engine::simplifyMap() {
     }
 }
 
+// https://gist.github.com/MatthewSteel/3158579
 int8_t Engine::minimax(int8_t player) {
   int8_t winner = win();
   if(winner != 0)
