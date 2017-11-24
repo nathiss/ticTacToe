@@ -1,5 +1,8 @@
 #include "OptionsState.hpp"
 
+uint8_t OptionsState::player = 0;
+uint8_t OptionsState::computer = 1;
+
 OptionsState::OptionsState(std::shared_ptr<sf::RenderWindow> w) {
   window = w;
   bag = SettingsBag::Instance();

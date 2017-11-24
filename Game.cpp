@@ -32,8 +32,6 @@ void Game::run() {
     }
     state->run();
   }
-  
-	code = 0;
 }
 
 int Game::getCode() const {

@@ -5,7 +5,7 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> w) {
   bag = SettingsBag::Instance();
   map = std::make_shared<Map>();
   playerChar = bag->get<MapCell::Value>("option.playerChar");
-  engine = std::make_unique<Engine>(map);
+  engine = std::unique_ptr<Engine>(new Engine(map));
 
   setUpTexts();
   map->setPosition(centerHorizontally(map->getLocalBounds()), 100.f);

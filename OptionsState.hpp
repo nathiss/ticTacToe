@@ -11,8 +11,8 @@ class OptionsState : public State {
     OptionsState(std::shared_ptr<sf::RenderWindow>);
     ~OptionsState();
 
-    static constexpr uint8_t player = 0;
-    static constexpr uint8_t computer = 1;
+    static uint8_t player;
+    static uint8_t computer;
 
     virtual void pollEvent() override;
     virtual void update() override;

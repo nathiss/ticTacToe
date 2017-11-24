@@ -1,6 +1,6 @@
 CXX=g++
 LD=g++
-CFLAGS=-ggdb -Wall -Wextra -std=c++1z -I./include
+CFLAGS=-ggdb -Wall -Wextra -std=c++11 -I./include
 LDFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
 
 EXEC=ttt
