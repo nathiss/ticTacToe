@@ -20,6 +20,7 @@ Game::Game() {
 Game::~Game() {
   delete bag->get<sf::Font*>("font.main");
   delete bag->get<sf::Font*>("font.menu");
+  delete bag->get<sf::Font*>("font.terminal");
 }
 
 void Game::run() {
@@ -50,10 +51,6 @@ void Game::loadConsts() {
   bag->set<sf::Color>("color.neutral", sf::Color::White);
 }
 
-
-
-
-
 void Game::loadFonts() {
   sf::Font *main = new sf::Font();
   sf::Font *menu = new sf::Font();
@@ -67,18 +64,15 @@ void Game::loadFonts() {
 
   const void *GlacialIndifference_ptr = &_binary_GlacialIndifference_otf_start;
   size_t GlacialIndifference_size = &_binary_GlacialIndifference_otf_end - &_binary_GlacialIndifference_otf_start;
-  if(!main->loadFromMemory(GlacialIndifference_ptr, GlacialIndifference_size)) {
+  if(!menu->loadFromMemory(GlacialIndifference_ptr, GlacialIndifference_size)) {
     throw std::runtime_error("Could not load font GlacialIndiffrence.");
   }
 
   const void *Inconsolata_ptr = &_binary_Inconsolata_ttf_start;
   size_t Inconsolata_size = &_binary_Inconsolata_ttf_end - &_binary_Inconsolata_ttf_start;
-  if(!main->loadFromMemory(Inconsolata_ptr, Inconsolata_size)) {
+  if(!terminal->loadFromMemory(Inconsolata_ptr, Inconsolata_size)) {
     throw std::runtime_error("Could not load font Inconsolata.");
   }
-
-  menu = main;
-  terminal = main;
   
   bag->set<sf::Font*>("font.main", main);
   bag->set<sf::Font*>("font.menu", menu);
