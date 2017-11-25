@@ -2,6 +2,7 @@ CXX=g++-mingw
 LD=g++-mingw
 CFLAGS=-DSFML_STATIC -ggdb -Wall -Wextra -std=c++11 -I./include
 LDFLAGS=-static -L./lib -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -ljpeg -lwinmm -lgdi32
+FONTBINTYPE=pe-x86-64
 
 EXEC=ttt.exe
 SOURCES=$(wildcard *.cpp)
@@ -9,16 +10,21 @@ OBJECTS=$(SOURCES:.cpp=.o)
 
 .PHONY: clean all run
 
-all: clean $(EXEC)
+all: clean fonts $(EXEC)
 
 run: all
 	./$(EXEC)
 
 $(EXEC): $(OBJECTS)
-	$(LD) $(OBJECTS) $(LDFLAGS) -o $(EXEC)
+	$(LD) $(OBJECTS) Unique.o GlacialIndifference.o Inconsolata.o $(LDFLAGS) -o $(EXEC)
 
 %.o: %.cpp
-	$(CXX) -c $(CFLAGS) $< -o $@ 
+	$(CXX) -c $(CFLAGS) $< -o $@
+
+fonts:
+	objcopy --input binary --output $(FONTBINTYPE) --binary-architecture i386:x86-64 Unique.ttf Unique.o
+	objcopy --input binary --output $(FONTBINTYPE) --binary-architecture i386:x86-64 GlacialIndifference.otf GlacialIndifference.o
+	objcopy --input binary --output $(FONTBINTYPE) --binary-architecture i386:x86-64 Inconsolata.ttf Inconsolata.o
 
 clean:
 	rm -rf $(EXEC) $(OBJECTS)

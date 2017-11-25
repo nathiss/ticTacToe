@@ -11,6 +11,15 @@
 #include "GameState.hpp"
 #include "EndState.hpp"
 
+extern uint8_t _binary_Unique_ttf_start;
+extern uint8_t _binary_Unique_ttf_end;
+
+extern uint8_t _binary_GlacialIndifference_otf_start;
+extern uint8_t _binary_GlacialIndifference_otf_end;
+
+extern uint8_t _binary_Inconsolata_ttf_start;
+extern uint8_t _binary_Inconsolata_ttf_end;
+
 class Game {
  public:
     Game();
