@@ -1,7 +1,7 @@
 CXX=g++-mingw
 LD=g++-mingw
 CFLAGS=-DSFML_STATIC -ggdb -Wall -Wextra -std=c++11 -I./include
-LDFLAGS=-static -L./win/bin -L./win/lib -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -ljpeg -lwinmm -lgdi32
+LDFLAGS=-static -L./lib -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -ljpeg -lwinmm -lgdi32
 
 EXEC=ttt.exe
 SOURCES=$(wildcard *.cpp)
