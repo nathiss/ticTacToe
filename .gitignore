@@ -2,5 +2,6 @@ share/
 lib/
 *.o
 ttt
+ttt.exe
 .swp
 .swo
