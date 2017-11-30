@@ -5,7 +5,7 @@ Game::Game() {
   loadConsts();
   loadFonts();
 
-	window = std::make_shared<sf::RenderWindow>(
+  window = std::make_shared<sf::RenderWindow>(
     sf::VideoMode(bag->get<uint32_t>("window.width"), bag->get<uint32_t>("window.height")),
     bag->get<std::string>("window.title"),
     bag->get<uint32_t>("window.style"),
@@ -25,7 +25,7 @@ Game::~Game() {
 void Game::run() {
   State::Type currentState = State::getType();
 
-	while(window->isOpen()) {
+  while(window->isOpen()) {
     if(currentState != State::getType()) {
       currentState = State::getType();
       state.reset(createState(currentState));
